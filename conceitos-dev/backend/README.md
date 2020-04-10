@@ -11,7 +11,7 @@ Criar o diretório src/ e o arquivo index.js dentro dele.
 Adicionar a dependência express:
 ```yarn add express```
 
-O express é um microframework, ou seja, um conjunto de ferramentas que dá a possibilidade de incluir na aplicação as rotas e o midleware.
+O express é um microframework, ou seja, um conjunto de ferramentas que dão a possibilidade de incluir na aplicação as rotas e os midlewares.
 
 
 ## Hello World com Node
@@ -91,9 +91,9 @@ Configurar o Insomnia para acessar as rotas criadas e criar o ambiente de desenv
 
 ## Tipos de Parâmetros
 
-* Query Params: principalmente para Filtros e Paginação;
-* Route Params: identificar recursos quando for atualizar ou deletar;
-* Request Body: é o corpo da requisição usado para colocar o conteúdo na hora de criar ou editar um recurso (JSON).
+* _Query Params_: principalmente para Filtros e Paginação;
+* _Route Params_: identificar recursos quando for atualizar ou deletar;
+* _Request Body_: é o corpo da requisição usado para colocar o conteúdo na hora de criar ou editar um recurso (JSON).
 
 É possível pegar os query params através do método get usando o parâmetro request.query.
 
@@ -196,7 +196,7 @@ app.post('/projects', (request, response) => {
 });
 ```
 
-Cada projeto novo criado, receberá um identificador único (uuid), o títule e o criado. Depois o projeto é adicionado ao final do array de projetos.
+Cada projeto novo criado, receberá um identificador único (uuid), o título e o nome do criador. Depois o projeto é adicionado ao final do array de projetos.
 
 Testando no Insomnia, é possível receber uma saída semelhante para o POST create:
 
@@ -208,7 +208,7 @@ Testando no Insomnia, é possível receber uma saída semelhante para o POST cre
 }
 ```
 
-Agora para o método put, vamos percorrer o array de projetos e procurar pela posição em que se encontrar o projeto que queremos alterar.
+Agora para o método put, vamos percorrer o array de projetos e procurar pela posição em que se encontra o projeto que queremos alterar.
 
 ```
 app.put('/projects/:id', (request, response) => {
@@ -316,7 +316,7 @@ app.get('/projects', (request, response) => {
 
 ## Middlewares
 
-É um interceptador de requisições que pode interromper totalmente a requisição ou alterar dados da requisição. Seu formato é uma função que recebe uma requisição e uma resposta como parâmetro. O middleware deve ser utilizado quando algum trecho de código deve ser disparado de forma automática em diferentes requisições. O middleware pode ser utilizado como um sniffer na aplicação.
+O middleware é um interceptador de requisições que pode interromper totalmente a requisição ou alterar dados da requisição. Seu formato é uma função que recebe uma requisição e uma resposta como parâmetro. O middleware deve ser utilizado quando algum trecho de código deve ser disparado de forma automática em diferentes requisições. O middleware pode ser utilizado como um sniffer na aplicação.
 
 ```
 function logRequests(request, response, next) {
@@ -409,5 +409,3 @@ function validateProjectId(request, response, next) {
 app.use(logRequests)
 app.use('/projects/:id', validateProjectId);
 ```
-
-
