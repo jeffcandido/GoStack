@@ -1,3 +1,6 @@
 conceitos-dev/**/node_modules
 /**/node_modules
 conceitos-dev/frontend/src/assets/background.jpg
+
+/**/tmp/*
+!tmp/.gitkeep
