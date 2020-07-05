@@ -1,5 +1,10 @@
 conceitos-dev/**/node_modules
 /**/node_modules
+/**/.env
+/**/.vscode
+/**/build/
+/**/coverage/
+/**/ormconfig.json
 conceitos-dev/frontend/src/assets/background.jpg
 
 /**/tmp/*
