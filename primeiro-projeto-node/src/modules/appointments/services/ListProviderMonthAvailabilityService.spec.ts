@@ -4,9 +4,7 @@ import ListProviderMonthAvailabilityService from './ListProviderMonthAvailabilit
 describe('ListProviders', () => {
   it('should be able to list the month availability from provider', async () => {
     const fakeAppointmentsRepository = new FakeAppointmentsRepository();
-    const listProviderMonthAvailabilitys = new ListProviderMonthAvailabilityService(
-      fakeAppointmentsRepository,
-    );
+    const listProviderMonthAvailabilitys = new ListProviderMonthAvailabilityService(fakeAppointmentsRepository);
 
     await fakeAppointmentsRepository.create({
       provider_id: 'user_id',
@@ -80,11 +78,13 @@ describe('ListProviders', () => {
       month: 5,
     });
 
-    expect(availability).toEqual(expect.arrayContaining([
-      { day: 19, available: true },
-      { day: 20, available: false },
-      { day: 21, available: true },
-      { day: 22, available: true },
-    ]));
+    expect(availability).toEqual(
+      expect.arrayContaining([
+        { day: 19, available: true },
+        { day: 20, available: false },
+        { day: 21, available: true },
+        { day: 22, available: true },
+      ]),
+    );
   });
 });

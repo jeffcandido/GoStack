@@ -66,7 +66,6 @@ describe('SendForgotPasswordEmail', () => {
     ).rejects.toBeInstanceOf(AppError);
   });
 
-
   it('should generate a forgot password token', async () => {
     const fakeUsersRepository = new FakeUsersRepository();
     const fakeMailProvider = new FakeMailProvider();

@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export default class CreateAppointments1587931593761 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -11,7 +11,7 @@ export default class CreateAppointments1587931593761 implements MigrationInterfa
             type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
-            default: 'uuid_generate_v4()'
+            default: 'uuid_generate_v4()',
           },
           {
             name: 'provider',
@@ -30,9 +30,9 @@ export default class CreateAppointments1587931593761 implements MigrationInterfa
             name: 'updated_at',
             type: 'timestamp',
             default: 'now()',
-          }
-        ]
-      })
+          },
+        ],
+      }),
     );
   }
 

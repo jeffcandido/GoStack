@@ -7,9 +7,7 @@ describe('ShowProfile', () => {
   it('should be able to show the profile', async () => {
     const fakeUsersRepository = new FakeUsersRepository();
 
-    const showProfile = new ShowProfileService(
-      fakeUsersRepository,
-    );
+    const showProfile = new ShowProfileService(fakeUsersRepository);
 
     const user = await fakeUsersRepository.create({
       name: 'John Doe',
@@ -28,12 +26,12 @@ describe('ShowProfile', () => {
   it('should not be able to show the profile from non-existing user', async () => {
     const fakeUsersRepository = new FakeUsersRepository();
 
-    const showProfile = new ShowProfileService(
-      fakeUsersRepository,
-    );
+    const showProfile = new ShowProfileService(fakeUsersRepository);
 
-    await expect(showProfile.execute({
-      user_id: 'non-existing-user-id',
-    })).rejects.toBeInstanceOf(AppError);
+    await expect(
+      showProfile.execute({
+        user_id: 'non-existing-user-id',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

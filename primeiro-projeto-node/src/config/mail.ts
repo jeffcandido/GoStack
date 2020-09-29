@@ -5,7 +5,7 @@ interface IMailConfig {
     from: {
       email: string;
       name: string;
-    }
+    };
   };
 }
 
@@ -16,6 +16,6 @@ export default {
     from: {
       email: 'jeff@pskbundle.com.br',
       name: 'Jefferson Cândido',
-    }
+    },
   },
 } as IMailConfig;

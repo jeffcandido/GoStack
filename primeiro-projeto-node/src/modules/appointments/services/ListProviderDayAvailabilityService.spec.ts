@@ -4,9 +4,7 @@ import ListProviderDayAvailabilityService from './ListProviderDayAvailabilitySer
 describe('ListProviders', () => {
   it('should be able to list the day availability from provider', async () => {
     const fakeAppointmentsRepository = new FakeAppointmentsRepository();
-    const listProviderDayAvailabilitys = new ListProviderDayAvailabilityService(
-      fakeAppointmentsRepository,
-    );
+    const listProviderDayAvailabilitys = new ListProviderDayAvailabilityService(fakeAppointmentsRepository);
 
     await fakeAppointmentsRepository.create({
       provider_id: 'user_id',
@@ -31,14 +29,16 @@ describe('ListProviders', () => {
       day: 20,
     });
 
-    expect(availability).toEqual(expect.arrayContaining([
-      { hour: 8, available: false },
-      { hour: 9, available: false },
-      { hour: 10, available: false },
-      { hour: 13, available: true },
-      { hour: 14, available: false },
-      { hour: 15, available: false },
-      { hour: 16, available: true },
-    ]));
+    expect(availability).toEqual(
+      expect.arrayContaining([
+        { hour: 8, available: false },
+        { hour: 9, available: false },
+        { hour: 10, available: false },
+        { hour: 13, available: true },
+        { hour: 14, available: false },
+        { hour: 15, available: false },
+        { hour: 16, available: true },
+      ]),
+    );
   });
 });

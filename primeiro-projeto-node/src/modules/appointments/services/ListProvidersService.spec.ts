@@ -5,9 +5,7 @@ describe('ListProviders', () => {
   it('should be able to list the providers', async () => {
     const fakeUsersRepository = new FakeUsersRepository();
 
-    const listProviders = new ListProvidersService(
-      fakeUsersRepository,
-    );
+    const listProviders = new ListProvidersService(fakeUsersRepository);
 
     const user1 = await fakeUsersRepository.create({
       name: 'John Doe',

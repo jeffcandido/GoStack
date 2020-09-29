@@ -10,10 +10,7 @@ describe('CreateUser', () => {
     const fakeUsersRepository = new FakeUsersRepository();
     const fakeHashProvider = new FakeHashProvider();
 
-    const createUser = new CreateUserService(
-      fakeUsersRepository,
-      fakeHashProvider,
-    );
+    const createUser = new CreateUserService(fakeUsersRepository, fakeHashProvider);
 
     const authenticateUser = new AuthenticateUserService(fakeUsersRepository, fakeHashProvider);
 
@@ -42,22 +39,17 @@ describe('CreateUser', () => {
       authenticateUser.execute({
         email: 'johndoe@example.com',
         password: '1243456',
-      })).rejects.toBeInstanceOf(AppError);
-    });
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
 
   it('should not be able to authenticate with wrong password', async () => {
     const fakeUsersRepository = new FakeUsersRepository();
     const fakeHashProvider = new FakeHashProvider();
 
-    const createUser = new CreateUserService(
-      fakeUsersRepository,
-      fakeHashProvider,
-    );
+    const createUser = new CreateUserService(fakeUsersRepository, fakeHashProvider);
 
-    const authenticateUser = new AuthenticateUserService(
-      fakeUsersRepository,
-      fakeHashProvider
-    );
+    const authenticateUser = new AuthenticateUserService(fakeUsersRepository, fakeHashProvider);
 
     await createUser.execute({
       name: 'John Doe',
@@ -74,6 +66,7 @@ describe('CreateUser', () => {
       authenticateUser.execute({
         email: 'johndoe@example.com',
         password: 'wrong-password',
-      })).rejects.toBeInstanceOf(AppError);
-    });
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
 });

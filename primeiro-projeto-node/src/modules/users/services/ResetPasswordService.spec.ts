@@ -26,12 +26,7 @@ describe('ResetPassword', () => {
     const fakeUserTokensRepository = new FakeUserTokensRepository();
     const fakeHashProvider = new FakeHashProvider();
 
-
-    resetPassword = new ResetPasswordService(
-      fakeUsersRepository,
-      fakeUserTokensRepository,
-      fakeHashProvider
-    );
+    resetPassword = new ResetPasswordService(fakeUsersRepository, fakeUserTokensRepository, fakeHashProvider);
 
     const user = await fakeUsersRepository.create({
       name: 'John Doe',
@@ -59,18 +54,13 @@ describe('ResetPassword', () => {
     const fakeUserTokensRepository = new FakeUserTokensRepository();
     const fakeHashProvider = new FakeHashProvider();
 
-
-    resetPassword = new ResetPasswordService(
-      fakeUsersRepository,
-      fakeUserTokensRepository,
-      fakeHashProvider
-    );
+    resetPassword = new ResetPasswordService(fakeUsersRepository, fakeUserTokensRepository, fakeHashProvider);
 
     await expect(
       resetPassword.execute({
         password: '123123',
         token: 'non-existing-token',
-      })
+      }),
     ).rejects.toBeInstanceOf(AppError);
   });
 
@@ -79,22 +69,15 @@ describe('ResetPassword', () => {
     const fakeUserTokensRepository = new FakeUserTokensRepository();
     const fakeHashProvider = new FakeHashProvider();
 
+    resetPassword = new ResetPasswordService(fakeUsersRepository, fakeUserTokensRepository, fakeHashProvider);
 
-    resetPassword = new ResetPasswordService(
-      fakeUsersRepository,
-      fakeUserTokensRepository,
-      fakeHashProvider
-    );
-
-    const { token } = await fakeUserTokensRepository.generate(
-      'non-existing-user',
-    );
+    const { token } = await fakeUserTokensRepository.generate('non-existing-user');
 
     await expect(
       resetPassword.execute({
         password: '123123',
         token,
-      })
+      }),
     ).rejects.toBeInstanceOf(AppError);
   });
 
@@ -103,12 +86,7 @@ describe('ResetPassword', () => {
     const fakeUserTokensRepository = new FakeUserTokensRepository();
     const fakeHashProvider = new FakeHashProvider();
 
-
-    resetPassword = new ResetPasswordService(
-      fakeUsersRepository,
-      fakeUserTokensRepository,
-      fakeHashProvider
-    );
+    resetPassword = new ResetPasswordService(fakeUsersRepository, fakeUserTokensRepository, fakeHashProvider);
 
     const user = await fakeUsersRepository.create({
       name: 'John Doe',
@@ -128,7 +106,7 @@ describe('ResetPassword', () => {
       resetPassword.execute({
         password: '123123',
         token,
-      })
+      }),
     ).rejects.toBeInstanceOf(AppError);
   });
 });

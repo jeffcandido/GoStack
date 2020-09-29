@@ -1,12 +1,6 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  CreateDateColumn,
-  UpdateDateColumn
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
-import { Exclude, Expose } from 'class-transformer'
+import { Exclude, Expose } from 'class-transformer';
 import uploadConfig from '@config/upload';
 
 @Entity('users')

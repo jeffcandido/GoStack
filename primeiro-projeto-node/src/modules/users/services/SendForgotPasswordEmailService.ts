@@ -1,8 +1,8 @@
 // import User from "../infra/typeorm/entities/User";
 import AppError from '@shared/errors/AppError';
 import IMailProvider from '@shared/container/providers/MailProvider/models/IMailProvider';
-import IUsersRepository from "../repositories/IUsersRepository";
-import IUserTokensRepository from "../repositories/IUserTokensRepository";
+import IUsersRepository from '../repositories/IUsersRepository';
+import IUserTokensRepository from '../repositories/IUserTokensRepository';
 import { injectable, inject } from 'tsyringe';
 import path from 'path';
 
@@ -21,23 +21,18 @@ class SendForgotPasswordEmailService {
 
     @inject('UserTokensRepository')
     private userTokensRepository: IUserTokensRepository,
-    ) {}
+  ) {}
 
   public async execute({ email }: IRequest): Promise<void> {
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
-      throw new AppError('User does not exists.')
+      throw new AppError('User does not exists.');
     }
 
     const { token } = await this.userTokensRepository.generate(user.id);
 
-    const forgotPasswordTemplate = path.resolve(
-      __dirname,
-      '..',
-      'views',
-      'forgot_password.hbs',
-    );
+    const forgotPasswordTemplate = path.resolve(__dirname, '..', 'views', 'forgot_password.hbs');
 
     await this.mailProvider.sendMail({
       to: {
@@ -50,8 +45,8 @@ class SendForgotPasswordEmailService {
         variables: {
           name: user.name,
           link: `${process.env.APP_WEB_URL}/reset_password?token=${token}`,
-        }
-      }
+        },
+      },
     });
   }
 }

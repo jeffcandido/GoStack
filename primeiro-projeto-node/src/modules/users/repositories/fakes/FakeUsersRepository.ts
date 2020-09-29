@@ -27,7 +27,7 @@ class FakeUsersRepository implements IUsersRepository {
       users = this.users.filter(user => user.id !== except_user_id);
     }
 
-    return users
+    return users;
   }
 
   public async create(userData: ICreateUserDTO): Promise<User> {

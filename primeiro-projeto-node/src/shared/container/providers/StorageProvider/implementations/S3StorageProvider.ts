@@ -49,7 +49,6 @@ class DiskStorageProvider implements IStorageProvider {
       })
       .promise();
   }
-
 }
 
 export default DiskStorageProvider;

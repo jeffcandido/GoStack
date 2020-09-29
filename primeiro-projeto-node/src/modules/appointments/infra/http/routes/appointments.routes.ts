@@ -19,7 +19,7 @@ appointmentsRouter.post(
       date: Joi.date(),
     },
   }),
-  appointmentsController.create
+  appointmentsController.create,
 );
 appointmentsRouter.get('/me', providerAppointmentsController.index);
 

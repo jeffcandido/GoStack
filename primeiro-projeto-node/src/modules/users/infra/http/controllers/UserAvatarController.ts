@@ -13,6 +13,5 @@ export default class UserAvatarController {
     });
 
     return response.json(classToClass(user));
-
   }
 }

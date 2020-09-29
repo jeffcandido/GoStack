@@ -10,7 +10,7 @@ interface IUploadConfig {
   tmpFolder: string;
   uploadsFolder: string;
 
-  multer:{
+  multer: {
     storage: StorageEngine;
   };
 
@@ -32,7 +32,7 @@ export default {
     storage: multer.diskStorage({
       destination: tmpFolder,
       filename(request, file, callback) {
-        const fileHash = crypto.randomBytes(10).toString('HEX');
+        const fileHash = crypto.randomBytes(10).toString('hex');
         const filenName = `${fileHash}-${file.originalname}`;
 
         return callback(null, filenName);
@@ -45,5 +45,5 @@ export default {
     aws: {
       bucket: 'pskbundle-gobarber',
     },
-  }
+  },
 } as IUploadConfig;

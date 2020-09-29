@@ -32,7 +32,6 @@ class ListProviderAppointmentsService {
 
     return appointments;
   }
-
 }
 
 export default ListProviderAppointmentsService;

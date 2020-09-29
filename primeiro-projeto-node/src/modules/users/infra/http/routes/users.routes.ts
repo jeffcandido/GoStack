@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
 
 import multer from 'multer';
-import uploadConfig from '@config/upload' ;
+import uploadConfig from '@config/upload';
 
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
@@ -26,11 +26,6 @@ usersRouter.post(
   usersController.create,
 );
 
-usersRouter.patch(
-  '/avatar',
-  ensureAuthenticated,
-  upload.single('avatar'),
-  userAvatarController.update
-  );
+usersRouter.patch('/avatar', ensureAuthenticated, upload.single('avatar'), userAvatarController.update);
 
 export default usersRouter;

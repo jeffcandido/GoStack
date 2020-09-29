@@ -3,10 +3,11 @@
     "target": "es5",
     "module": "commonjs",
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "src",
     "strict": true,
-    "strictPropertyInitialization": false,
-    "baseUrl": "./src",
+    "strictPropertyInitialization": true,
+    "declaration": true,
+    "baseUrl": "./",
     "allowJs": true,
     "paths": {
       "@modules/*": ["modules/*"],
@@ -16,6 +17,9 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "forceConsistentCasingInFileNames": true
-  }
+    "forceConsistentCasingInFileNames": true,
+    "removeComments": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules", "dist", "*.config.js"]
 }
