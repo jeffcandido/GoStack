@@ -62,7 +62,7 @@ app.listen(3333, () => {
 Como resultado:
 
 ```
-jeff@jeff-ZupVM:~/workarea/conceitos-dev/backend$ yarn dev
+jeff@jeff-VM:~/workarea/conceitos-dev/backend$ yarn dev
 yarn dev
 yarn run v1.22.4
 $ nodemon

@@ -1,5 +1,11 @@
 /node_modules
 /coverage
 /dist
-/.vscode
-.env
+**/.vscode
+**/.env
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*

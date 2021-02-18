@@ -1,0 +1,16 @@
+FROM node:14.15.4-alpine
+
+WORKDIR /home/gobarber/api
+
+COPY ["package.json", "package-lock.json*", "/home/gobarber/api/"]
+
+RUN apk add --no-cache --virtual native-deps bash \
+  g++ gcc libgcc libstdc++ linux-headers make python && \
+  npm install --quiet node-gyp@7.1.2 typescript ts-node-dev ts-node -g && \
+  npm install --development --silent
+
+COPY . /home/gobarber/api/
+
+EXPOSE 3333
+
+CMD ["npm", "dev:server"]
