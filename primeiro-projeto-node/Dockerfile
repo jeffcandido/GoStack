@@ -16,10 +16,6 @@ RUN apk add --no-cache --virtual native-deps \
 
 COPY . .
 
-RUN useradd -ms /bin/bash -u 1000 gobarber && \
-  chown -R gobarber:gobarber ${API_DIR} && \
-  setcap CAP_NET_BIND_SERVICE=+eip /usr/local/lib/node/bin/node
-
 USER 1000
 
 CMD ["npm", "start"]
